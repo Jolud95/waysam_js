@@ -16,10 +16,10 @@ const App = (props) => {
                 <div className="app-wrapper-content">
                     <Route path="/dialogs"
                            render={() =>
-                               <DialogsContainer store={props.store}/>}/>
+                               <DialogsContainer />}/>
                     <Route path="/profile"
                            render={() =>
-                               <Profile store={props.store}/>}/>
+                               <Profile />}/>
                 </div>
             </div>
         </BrowserRouter>);
