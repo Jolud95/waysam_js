@@ -4,7 +4,7 @@ const SET_USERS = "SET_USERS";
 
 let initialState = {
     users: [
-        {
+        /*{
             id: 1,
             photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsYKIeL4WvcPtmkxMi3U_JIQbbTcs-nR8vwQ&usqp=CAU",
             followed: false,
@@ -35,11 +35,12 @@ let initialState = {
             fullName: "Olivia",
             status: "I've a nice name",
             location: {city: "Volgograd", country: "Russia"}
-        }
+        }*/
     ]
 };
 
 const usersReducer = (state = initialState, action) => {
+    debugger
     switch (action.type) {
         case FOLLOW:
             return {

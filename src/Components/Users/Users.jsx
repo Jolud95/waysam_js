@@ -1,47 +1,24 @@
 import styles from './Users.module.css'
+import avatar from "../../assets/images/avatar.png"
+import * as axios from "axios";
 
-let Users = (props) => {
-    if (props.users.length === 0) {
-        props.setUsers([
-            {
-                id: 1,
-                photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsYKIeL4WvcPtmkxMi3U_JIQbbTcs-nR8vwQ&usqp=CAU",
-                followed: false,
-                fullName: "Kate",
-                status: "I'll a programmer",
-                location: {city: "Volgograd", country: "Russia"}
-            },
-            {
-                id: 2,
-                photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsYKIeL4WvcPtmkxMi3U_JIQbbTcs-nR8vwQ&usqp=CAU",
-                followed: true,
-                fullName: "Max",
-                status: "I'm a good man",
-                location: {city: "Volgograd", country: "Russia"}
-            },
-            {
-                id: 3,
-                photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsYKIeL4WvcPtmkxMi3U_JIQbbTcs-nR8vwQ&usqp=CAU",
-                followed: false,
-                fullName: "Simon",
-                status: "I'm a cat",
-                location: {city: "Volgograd", country: "Russia"}
-            },
-            {
-                id: 4,
-                photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsYKIeL4WvcPtmkxMi3U_JIQbbTcs-nR8vwQ&usqp=CAU",
-                followed: true,
-                fullName: "Olivia",
-                status: "I've a nice name",
-                location: {city: "Volgograd", country: "Russia"}
-            }
-        ])
+    let Users = (props) => {
+
+
+    let getUsers = () => {
+        if (props.users.length === 0) {
+             axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    props.setUsers(response.data.items);
+                });
+        }
     }
     return <div>
+        <button onClick={getUsers}>Get Users</button>
         {props.users.map(u => <div key={u.id}>
             <span>
                 <div>
-                    <img src={u.photoUrl} className={styles.userPhoto}/>
+                    <img src={u.photos.small != null ? u.photos.small : avatar} className={styles.userPhoto}/>
                 </div>
                 <div>
                     {u.followed
@@ -56,12 +33,12 @@ let Users = (props) => {
             </span>
             <span>
                 <span>
-                    <div>{u.fullName}</div>
+                    <div>{u.name}</div>
                     <div>{u.status}</div>
                 </span>
                 <span>
-                    <div>{u.location.country}</div>
-                    <div>{u.location.city}</div>
+                    <div>{"u.location.country"}</div>
+                    <div>{"u.location.city"}</div>
                 </span>
             </span>
         </div>)
