@@ -1,10 +1,10 @@
 import './App.css';
 import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
-import Profile from "./Components/Profile/Profile";
 import {BrowserRouter, Route} from "react-router-dom";
 import React from "react";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+import ProfileContainer from "./Components/Profile/ProfileInfo/ProfileContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
 
 
@@ -20,7 +20,7 @@ const App = (props) => {
                                <DialogsContainer />}/>
                     <Route path="/profile"
                            render={() =>
-                               <Profile />}/>
+                               <ProfileContainer />}/>
                     <Route path="/users"
                            render={() =>
                                <UsersContainer />}/>
