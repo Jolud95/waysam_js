@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from "./Components/Navbar/Navbar";
-import {BrowserRouter, Route} from "react-router-dom";
+import {HashRouter, Route} from "react-router-dom";
 import React from "react";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
@@ -22,7 +22,7 @@ class App extends React.Component {
             return <Preloader/>
         }
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <div className="app-wrapper">
                     <HeaderContainer/>
                     <Navbar/>
@@ -41,7 +41,7 @@ class App extends React.Component {
                                    <Login/>}/>
                     </div>
                 </div>
-            </BrowserRouter>);
+            </HashRouter>);
     }
 }
 
